@@ -1,7 +1,12 @@
 [package]
 name = "server"
+authors = ["Lex Childs <lexchilds@gmail.com>"]
 version = "0.1.0"
 edition = "2021"
+license = "BSD-3-Clause"
+readme = "README.md"
+repository = "https://github.com/lex148/fakeoauth"
+description = "An Oauth Provider for local developerment"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
