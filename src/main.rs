@@ -24,10 +24,17 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .service(actix_files::Files::new("/assets", "./src/assets"))
             .service(assets_controller::styles)
+            // The auth routes
             .service(greetings_controller::index)
+            .service(greetings_controller::index2)
+            // internal, you clicked the turtle
             .service(logins_controller::index)
+            // Token exchange
             .service(tokens_controller::index)
+            .service(tokens_controller::index2)
+            // Other server requesting info
             .service(userinfos_controller::index)
+            .service(userinfos_controller::index2)
     })
     .bind(bind_interface)?
     .run()

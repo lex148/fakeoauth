@@ -3,6 +3,15 @@ use actix_web::{get, HttpRequest, HttpResponse};
 
 #[get("/userinfo")]
 pub(crate) async fn index(req: HttpRequest) -> Result<HttpResponse> {
+    userinfo(req).await
+}
+
+#[get("/api/v3/user")]
+pub(crate) async fn index2(req: HttpRequest) -> Result<HttpResponse> {
+    userinfo(req).await
+}
+
+async fn userinfo(req: HttpRequest) -> Result<HttpResponse> {
     let token = req.headers().get("authorization").ok_or(InvalidData)?;
     let token = token.to_str().or(Err(InvalidData))?;
     let name = get_substr_after_keyword(token, "Bearer ").ok_or(InvalidData)?;

@@ -9,6 +9,15 @@ struct Params {
 
 #[post("/token")]
 pub(crate) async fn index(form: Form<Params>) -> Result<HttpResponse> {
+    token_exchange(form).await
+}
+
+#[post("/oauth/token")]
+pub(crate) async fn index2(form: Form<Params>) -> Result<HttpResponse> {
+    token_exchange(form).await
+}
+
+async fn token_exchange(form: Form<Params>) -> Result<HttpResponse> {
     let code = form.code.to_string();
     let json = format!(
         r##"
